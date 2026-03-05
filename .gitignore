@@ -81,7 +81,7 @@ filelists/
 
 # Data Files
 # ----------
-*.npy
+# *.npy
 *.npz
 *.pkl
 *.pickle
