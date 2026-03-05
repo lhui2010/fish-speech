@@ -43,79 +43,58 @@
 </div>
 
 > [!IMPORTANT]
-> **Aviso de Licença**
+> **Aviso de Licença**  
 > Esta base de código é lançada sob a **Licença Apache** e todos os pesos dos modelos são lançados sob a **Licença CC-BY-NC-SA-4.0**. Consulte [LICENSE](../LICENSE) para mais detalhes.
 
 > [!WARNING]
-> **Isenção de Responsabilidade Legal**
+> **Isenção de Responsabilidade Legal**  
 > Não assumimos qualquer responsabilidade pelo uso ilegal da base de código. Consulte as leis locais sobre DMCA e outras leis relacionadas.
 
-## FishAudio-S1
-**Síntese de Voz e Clonagem de Voz com Qualidade Humana**
-
-FishAudio-S1 é um modelo expressivo de text-to-speech (TTS) e clonagem de voz desenvolvido pela [Fish Audio](https://fish.audio/), projetado para gerar fala que soa natural, realista e emocionalmente rica — não robótica, não plana e não restrita à narração estilo estúdio.
-
-FishAudio-S1 foca em como os humanos realmente falam: com emoção, variação, pausas e intenção.
-
-### Anúncio 🎉
-
-Estamos animados em anunciar que mudamos nossa marca para **Fish Audio** — introduzindo uma nova série revolucionária de modelos avançados de Text-to-Speech que se baseia na fundação do Fish-Speech.
-
-Temos o orgulho de lançar o **FishAudio-S1** (também conhecido como OpenAudio S1) como o primeiro modelo desta série, oferecendo melhorias significativas em qualidade, desempenho e capacidades.
-
-O FishAudio-S1 vem em duas versões: **FishAudio-S1** e **FishAudio-S1-mini**. Ambos os modelos estão agora disponíveis no [Fish Audio Playground](https://fish.audio) (para **FishAudio-S1**) e [Hugging Face](https://huggingface.co/fishaudio/openaudio-s1-mini) (para **FishAudio-S1-mini**).
-
-Visite o [site Fish Audio](https://fish.audio/) para playground ao vivo e relatório técnico.
-
-### Variantes do Modelo
-
-| Modelo | Tamanho | Disponibilidade | Descrição |
-|------|------|-------------|-------------|
-| FishAudio-S1 | 4B parâmetros | [fish.audio](https://fish.audio/) | Modelo flagship com recursos completos, máxima qualidade e estabilidade |
-| FishAudio-S1-mini | 0.5B parâmetros | [huggingface](https://huggingface.co/spaces/fishaudio/openaudio-s1-mini) | Modelo destilado open-source com capacidades principais |
-
-Tanto S1 quanto S1-mini incorporam Aprendizado por Reforço online com Feedback Humano (RLHF).
-
-### Comece Aqui
+## Comece Aqui
 
 Aqui estão os documentos oficiais do Fish Speech, siga as instruções para começar facilmente.
 
 - [Instalação](https://speech.fish.audio/install/)
 - [Fine-tune](https://speech.fish.audio/finetune/)
 - [Inferência](https://speech.fish.audio/inference/)
-- [Amostras](https://speech.fish.audio/samples/)
+- [Amostras](https://speech.fish.audio/examples)
 
-## Destaques
+## 🎉 Anúncio
+
+Estamos animados em anunciar que mudamos nossa marca para **OpenAudio** — introduzindo uma nova série revolucionária de modelos avançados de Text-to-Speech que se baseia na fundação do Fish-Speech.
+
+Temos o orgulho de lançar o **OpenAudio-S1** como o primeiro modelo desta série, oferecendo melhorias significativas em qualidade, desempenho e capacidades.
+
+O OpenAudio-S1 vem em duas versões: **OpenAudio-S1** e **OpenAudio-S1-mini**. Ambos os modelos estão agora disponíveis no [Fish Audio Playground](https://fish.audio) (para **OpenAudio-S1**) e [Hugging Face](https://huggingface.co/fishaudio/openaudio-s1-mini) (para **OpenAudio-S1-mini**).
+
+Visite o [site OpenAudio](https://openaudio.com/blogs/s1) para blog e relatório técnico.
+
+## Destaques ✨
 
 ### **Excelente qualidade TTS**
 
-Usamos as métricas de avaliação Seed TTS para avaliar o desempenho do modelo, e os resultados mostram que o FishAudio S1 alcança **0.008 WER** e **0.004 CER** em texto em inglês, que é significativamente melhor que modelos anteriores. (Inglês, avaliação automática, baseada no OpenAI gpt-4o-transcribe, distância do locutor usando Revai/pyannote-wespeaker-voxceleb-resnet34-LM)
+Usamos as métricas de avaliação Seed TTS para avaliar o desempenho do modelo, e os resultados mostram que o OpenAudio S1 alcança **0.008 WER** e **0.004 CER** em texto em inglês, que é significativamente melhor que modelos anteriores. (Inglês, avaliação automática, baseada no OpenAI gpt-4o-transcribe, distância do locutor usando Revai/pyannote-wespeaker-voxceleb-resnet34-LM)
 
 | Modelo | Taxa de Erro de Palavra (WER) | Taxa de Erro de Caractere (CER) | Distância do Locutor |
 |-------|----------------------|---------------------------|------------------|
 | **S1** | **0.008**  | **0.004**  | **0.332** |
 | **S1-mini** | **0.011** | **0.005** | **0.380** |
 
-
 ### **Melhor Modelo no TTS-Arena2** 🏆
 
-O FishAudio S1 alcançou a **classificação #1** no [TTS-Arena2](https://arena.speechcolab.org/), o benchmark para avaliação de text-to-speech:
+O OpenAudio S1 alcançou a **classificação #1** no [TTS-Arena2](https://arena.speechcolab.org/), o benchmark para avaliação de text-to-speech:
 
 <div align="center">
     <img src="assets/Elo.jpg" alt="Classificação TTS-Arena2" style="width: 75%;" />
 </div>
 
-### Fala Verdadeiramente Humana
+### **Controle de Fala**
 
-FishAudio-S1 gera fala que soa natural e conversacional, em vez de robótica ou excessivamente polida. O modelo captura variações sutis em tempo, ênfase e prosódia, evitando o efeito "gravação de estúdio" comum em sistemas TTS tradicionais.
-
-### **Controle de Emoção e Expressividade**
-
-FishAudio S1 é o primeiro modelo TTS a suportar **controle de emoção refinado em domínio aberto** através de marcadores explícitos de emoção e tom. Agora podemos direcionar precisamente como uma voz soa:
+O OpenAudio S1 **suporta uma variedade de marcadores emocionais, de tom e especiais** para aprimorar a síntese de fala:
 
 - **Emoções básicas**:
 ```
-(raivoso) (triste) (animado) (surpreso) (satisfeito) (encantado)
+(raivoso) (triste) (animado) (surpreso) (satisfeito) (encantado) 
 (assustado) (preocupado) (chateado) (nervoso) (frustrado) (deprimido)
 (empático) (envergonhado) (enojado) (emocionado) (orgulhoso) (relaxado)
 (grato) (confiante) (interessado) (curioso) (confuso) (alegre)
@@ -123,7 +102,7 @@ FishAudio S1 é o primeiro modelo TTS a suportar **controle de emoção refinado
 
 - **Emoções avançadas**:
 ```
-(desdenhoso) (infeliz) (ansioso) (histérico) (indiferente)
+(desdenhoso) (infeliz) (ansioso) (histérico) (indiferente) 
 (impaciente) (culpado) (desprezível) (em pânico) (furioso) (relutante)
 (entusiasmado) (desaprovador) (negativo) (negando) (espantado) (sério)
 (sarcástico) (conciliador) (consolador) (sincero) (escarnecedor)
@@ -143,18 +122,16 @@ FishAudio S1 é o primeiro modelo TTS a suportar **controle de emoção refinado
 
 Você também pode usar Ha,ha,ha para controlar, há muitos outros casos esperando para serem explorados por você mesmo.
 
-### Suporte Multilíngue
+(Suporte para inglês, chinês e japonês agora, e mais idiomas em breve!)
 
-FishAudio-S1 suporta text-to-speech multilíngue de alta qualidade sem exigir fonemas ou pré-processamento específico de idioma.
+### **Dois Tipos de Modelos**
 
-**Idiomas que suportam marcadores de emoção incluem:**
-Inglês, Chinês, Japonês, Alemão, Francês, Espanhol, Coreano, Árabe, Russo, Holandês, Italiano, Polonês e Português.
+| Modelo | Tamanho | Disponibilidade | Recursos |
+|-------|------|--------------|----------|
+| **S1** | 4B parâmetros | Disponível em [fish.audio](https://fish.audio/) | Modelo flagship com recursos completos |
+| **S1-mini** | 0.5B parâmetros | Disponível no Hugging Face [hf space](https://huggingface.co/spaces/fishaudio/openaudio-s1-mini) | Versão destilada com capacidades principais |
 
-A lista está em constante expansão, verifique [Fish Audio](https://fish.audio/) para os últimos lançamentos.
-
-### Clonagem de Voz Rápida
-
-FishAudio-S1 suporta clonagem de voz precisa usando uma amostra de referência curta (tipicamente 10-30 segundos). O modelo captura timbre, estilo de fala e tendências emocionais, produzindo vozes clonadas realistas e consistentes sem ajuste fino adicional.
+Tanto S1 quanto S1-mini incorporam Aprendizado por Reforço online com Feedback Humano (RLHF).
 
 ## **Recursos**
 
@@ -177,22 +154,22 @@ FishAudio-S1 suporta clonagem de voz precisa usando uma amostra de referência c
 <div align="center">
 
 ### **Mídia Social**
-<a href="https://x.com/hehe6z/status/1980303682932744439" target="_blank">
+<a href="https://x.com/FishAudio/status/1929915992299450398" target="_blank">
     <img src="https://img.shields.io/badge/𝕏-Latest_Demo-black?style=for-the-badge&logo=x&logoColor=white" alt="Demo Mais Recente no X" />
 </a>
 
 ### **Demos Interativos**
 <a href="https://fish.audio" target="_blank">
-    <img src="https://img.shields.io/badge/Fish.Audio-Try_FishAudio_S1-blue?style=for-the-badge" alt="Experimente FishAudio S1" />
+    <img src="https://img.shields.io/badge/Fish_Audio-Try_OpenAudio_S1-blue?style=for-the-badge" alt="Experimente OpenAudio S1" />
 </a>
 <a href="https://huggingface.co/spaces/fishaudio/openaudio-s1-mini" target="_blank">
-    <img src="https://img.shields.io/badge/Hugging_Face-Use_S1_Mini-yellow?style=for-the-badge" alt="Use S1 Mini" />
+    <img src="https://img.shields.io/badge/Hugging_Face-Try_S1_Mini-yellow?style=for-the-badge" alt="Experimente S1 Mini" />
 </a>
 
 ### **Vitrines de Vídeo**
 
-<a href="https://www.youtube.com/watch?v=WR1FY32Lhps" target="_blank">
-    <img src="assets/Thumbnail.jpg" alt="FishAudio S1 Video" style="width: 50%;" />
+<a href="https://www.youtube.com/watch?v=SYuPvd7m06A" target="_blank">
+    <img src="assets/Thumbnail.jpg" alt="OpenAudio S1 Video" style="width: 50%;" />
 </a>
 
 </div>

@@ -80,54 +80,18 @@ class API(ExceptionHandler):
 
     async def initialize_app(self, app: Kui):
         # Make the ModelManager available to the views
-        try:
-            app.state.model_manager = ModelManager(
-                mode=self.args.mode,
-                device=self.args.device,
-                half=self.args.half,
-                compile=self.args.compile,
-                llama_checkpoint_path=self.args.llama_checkpoint_path,
-                decoder_checkpoint_path=self.args.decoder_checkpoint_path,
-                decoder_config_name=self.args.decoder_config_name,
-            )
-            logger.info(f"ModelManager initialized successfully")
-        except AttributeError as e:
-            if "list_audio_backends" in str(e):
-                logger.warning(f"Torchaudio compatibility issue detected: {e}")
-                logger.info("Applying compatibility patch...")
-                
-                # Apply the patch dynamically
-                import torchaudio
-                import fish_speech.inference_engine.reference_loader as reference_loader
-                
-                # Patch the __init__ method of ReferenceLoader
-                original_init = reference_loader.ReferenceLoader.__init__
-                
-                def patched_init(self):
-                    # Call original but catch the error
-                    try:
-                        original_init(self)
-                    except AttributeError:
-                        # If list_audio_backends fails, set a default backend
-                        self.audio_backends = ['soundfile']
-                        logger.info("Using fallback audio backend: soundfile")
-                
-                reference_loader.ReferenceLoader.__init__ = patched_init
-                
-                # Retry model initialization
-                app.state.model_manager = ModelManager(
-                    mode=self.args.mode,
-                    device=self.args.device,
-                    half=self.args.half,
-                    compile=self.args.compile,
-                    llama_checkpoint_path=self.args.llama_checkpoint_path,
-                    decoder_checkpoint_path=self.args.decoder_checkpoint_path,
-                    decoder_config_name=self.args.decoder_config_name,
-                )
-            else:
-                raise e
-        
+        app.state.model_manager = ModelManager(
+            mode=self.args.mode,
+            device=self.args.device,
+            half=self.args.half,
+            compile=self.args.compile,
+            llama_checkpoint_path=self.args.llama_checkpoint_path,
+            decoder_checkpoint_path=self.args.decoder_checkpoint_path,
+            decoder_config_name=self.args.decoder_config_name,
+        )
+
         logger.info(f"Startup done, listening server at http://{self.args.listen}")
+
 
 # Each worker process created by Uvicorn has its own memory space,
 # meaning that models and variables are not shared between processes.

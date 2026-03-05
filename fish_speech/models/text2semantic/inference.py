@@ -587,6 +587,12 @@ def launch_thread_safe_queue(
     type=str,
     default="你说的对, 但是原神是一款由米哈游自主研发的开放世界手游.",
 )
+@click.option(
+    "--input_file",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default="",
+    help="Path to a text file containing input text",
+)
 @click.option("--prompt-text", type=str, default=None, multiple=True)
 @click.option(
     "--prompt-tokens",
@@ -614,6 +620,7 @@ def launch_thread_safe_queue(
 def main(
     text: str,
     prompt_text: Optional[tuple[str, ...]],
+    input_file: Optional[Path],
     prompt_tokens: Optional[tuple[Path, ...]],
     num_samples: int,
     max_new_tokens: int,
@@ -631,6 +638,12 @@ def main(
 ) -> None:
     os.makedirs(output_dir, exist_ok=True)
     precision = torch.half if half else torch.bfloat16
+
+    # print(input_file)
+
+    if input_file != "":
+        with open(input_file) as fh:
+            text = fh.read()
 
     if (
         prompt_text is not None
