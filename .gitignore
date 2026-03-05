@@ -73,8 +73,8 @@ filelists/
 
 # Audio Files
 # -----------
-*.wav
-*.mp3
+# *.wav
+# *.mp3
 *.flac
 *.ogg
 *.m4a
