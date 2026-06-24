@@ -1,5 +1,6 @@
 import re
-from threading import Lock
+# from threading import Lock
+from asyncio import Lock
 
 import pyrootutils
 import uvicorn

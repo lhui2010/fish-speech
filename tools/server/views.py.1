@@ -152,30 +152,23 @@ async def tts(req: Annotated[ServeTTSRequest, Body(exclusive=True)]):
             )
 
         # Perform TTS
-        # Only one TTS request is allowed to use the model at a time.
         if req.streaming:
-            async def locked_inference_stream():
-                async with app_state.lock:
-                    async for chunk in inference_async(req, engine):
-                        yield chunk
-
             return StreamResponse(
-                iterable=locked_inference_stream(),
+                iterable=inference_async(req, engine),
                 headers={
                     "Content-Disposition": f"attachment; filename=audio.{req.format}",
                 },
                 content_type=get_content_type(req.format),
             )
         else:
-            async with app_state.lock:
-                fake_audios = next(inference(req, engine))
-                buffer = io.BytesIO()
-                sf.write(
-                    buffer,
-                    fake_audios,
-                    sample_rate,
-                    format=req.format,
-                )
+            fake_audios = next(inference(req, engine))
+            buffer = io.BytesIO()
+            sf.write(
+                buffer,
+                fake_audios,
+                sample_rate,
+                format=req.format,
+            )
 
             return StreamResponse(
                 iterable=buffer_to_async_generator(buffer.getvalue()),
